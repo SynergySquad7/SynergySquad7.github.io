@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Team</title>
+    <title>Synergy Squad</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -11,160 +13,353 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --primary-blue: #1e40af;
+            --light-blue: #3b82f6;
+            --accent-blue: #60a5fa;
+            --dark-blue: #1e3a8a;
+            --white: #ffffff;
+            --gray-50: #f8fafc;
+            --gray-100: #f1f5f9;
+            --gray-200: #e2e8f0;
+            --gray-300: #cbd5e1;
+            --gray-400: #94a3b8;
+            --gray-500: #64748b;
+            --gray-600: #475569;
+            --gray-700: #334155;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #f7fafc;
+            background: var(--white);
             min-height: 100vh;
-            padding: 24px;
-            color: #1e40af;
-            line-height: 1.5;
+            color: var(--gray-700);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Background decoration */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(30, 64, 175, 0.05) 0%, transparent 70%);
+            animation: float 20s ease-in-out infinite;
+            z-index: -1;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: rotate(0deg) translate(-20px, -10px) rotate(0deg); }
+            33% { transform: rotate(120deg) translate(-20px, -10px) rotate(-120deg); }
+            66% { transform: rotate(240deg) translate(-20px, -10px) rotate(-240deg); }
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
+            padding: 0 24px;
         }
 
-        /* Header Section */
         .header {
+            background: var(--white);
             text-align: center;
-            margin-bottom: 48px;
-            animation: fadeInDown 0.8s ease-out;
+            padding: 80px 0 60px;
+            position: relative;
+            animation: slideInDown 1s ease-out;
+        }
+        
+        .team-photo-section {
+            background: var(--primary-blue);
+            padding: 80px 0;
+            margin: 0 -50vw;
+            margin-left: calc(-50vw + 50%);
+            margin-right: calc(-50vw + 50%);
+        }
+        
+        .members-section {
+            background: var(--white);
+            padding: 80px 0;
         }
 
-        .logo {
-            width: 100px;
-            height: 100px;
-            background: #ffffff;
-            border-radius: 50%;
-            margin: 0 auto 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 40px;
-            font-weight: 700;
-            border: 2px solid #e2e8f0;
-            transition: transform 0.3s ease;
-        }
-
-        .logo:hover {
-            transform: scale(1.03);
-        }
-
-        .team-name {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-            color: #1e40af;
-        }
-
-        .team-tagline {
-            font-size: 1.125rem;
-            color: #475569;
-            margin-bottom: 24px;
-        }
-
-        /* Play Game Button */
-        .play-button {
-            background: #1e40af;
-            border: none;
-            padding: 12px 32px;
-            font-size: 1rem;
-            font-weight: 600;
-            color: #ffffff;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            text-decoration: none;
+        .logo-container {
+            position: relative;
             display: inline-block;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
             margin-bottom: 32px;
         }
 
+        .logo {
+            width: 120px;
+            height: 120px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--white);
+            box-shadow: var(--shadow-xl);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .logo::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .logo:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 25px 50px -12px rgb(255, 255, 255);
+        }
+
+        .team-name {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary-blue), var(--light-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        .team-tagline {
+            font-size: 1.25rem;
+            color: var(--gray-600);
+            margin-bottom: 40px;
+            font-weight: 400;
+        }
+
+        /* Enhanced Play Button */
+        .play-button {
+            background: linear-gradient(135deg, var(--primary-blue), var(--light-blue));
+            border: none;
+            padding: 16px 48px;
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--white);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .play-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .play-button:hover::before {
+            left: 100%;
+        }
+
         .play-button:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transform: translateY(-3px);
+            box-shadow: 0 25px 50px -12px rgba(30, 64, 175, 0.4);
         }
 
-        .play-button:active {
-            transform: translateY(0);
+        .play-button::after {
+            content: '🎮';
+            font-size: 1.2em;
         }
 
-        /* Team Photo Section */
+        /* Enhanced Team Photo Section */
         .team-photo-section {
+            background: var(--primary-blue);
+            padding: 80px 0;
+            margin: 0 -50vw;
+            margin-left: calc(-50vw + 50%);
+            margin-right: calc(-50vw + 50%);
             text-align: center;
-            margin-bottom: 64px;
-            animation: fadeInUp 0.8s ease-out 0.2s both;
+            margin-bottom: 0;
+            animation: slideInUp 1s ease-out 0.3s both;
         }
 
         .team-photo-container {
             position: relative;
             display: inline-block;
-            margin-bottom: 16px;
+            margin-bottom: 40px;
         }
 
         .team-photo {
-            width: 400px;
-            height: 300px;
-            background: #ffffff;
-            border-radius: 12px;
-            border: 2px solid #e2e8f0;
+            width: min(900px, 90vw);
+            height: auto;
+            aspect-ratio: 16/9;
+            background: var(--white);
+            border-radius: 24px;
+            border: 1px solid var(--white);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            font-size: 1.125rem;
+            color: var(--gray-500);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3);
+            position: relative;
         }
 
-        .team-photo:hover {
-            transform: scale(1.01);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        .team-photo::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(30, 64, 175, 0.05) 50%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .team-photo:hover::before {
+            opacity: 1;
         }
 
         .team-photo img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 10px;
+            border-radius: 23px;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* Members Grid */
+        .team-photo:hover {
+            transform: scale(1.02);
+            box-shadow: 0 35px 70px -12px rgba(0, 0, 0, 0.4);
+        }
+
+        .team-photo:hover img {
+            transform: scale(1.05);
+        }
+
+        .members-section {
+            background: var(--white);
+            padding: 80px 0;
+            margin-top: 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 60px;
+            animation: slideInUp 1s ease-out 0.5s both;
+        }
+
         .members-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
-            margin-top: 48px;
-            animation: fadeInUp 0.8s ease-out 0.4s both;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+            animation: slideInUp 1s ease-out 0.7s both;
         }
 
         .member-card {
-            background: #ffffff;
-            border-radius: 12px;
-            padding: 24px;
+            background: var(--white);
+            border-radius: 20px;
+            padding: 32px;
             text-align: center;
-            border: 1px solid #e2e8f0;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid var(--gray-200);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .member-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--light-blue), var(--accent-blue));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .member-card:hover::before {
+            transform: scaleX(1);
         }
 
         .member-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transform: translateY(-12px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--accent-blue);
+        }
+
+        .member-photo-container {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 24px;
         }
 
         .member-photo {
-            width: 100px;
-            height: 100px;
-            background: #f7fafc;
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, var(--gray-100), var(--white));
             border-radius: 50%;
-            margin: 0 auto 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.75rem;
-            border: 2px solid #e2e8f0;
-            transition: transform 0.3s ease, border-color 0.3s ease;
+            font-size: 2rem;
+            border: 4px solid var(--white);
+            box-shadow: var(--shadow-lg);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             overflow: hidden;
+            position: relative;
+        }
+
+        .member-photo::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--light-blue));
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: -1;
+        }
+
+        .member-card:hover .member-photo::before {
+            opacity: 1;
         }
 
         .member-photo img {
@@ -172,197 +367,308 @@
             height: 100%;
             object-fit: cover;
             border-radius: 50%;
+            transition: transform 0.3s ease;
         }
 
         .member-card:hover .member-photo {
-            transform: scale(1.05);
-            border-color: #1e40af;
+            transform: scale(1.1);
         }
 
         .member-name {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 6px;
-            color: #1e40af;
+            font-size: 1.375rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--primary-blue);
         }
 
         .member-role {
-            font-size: 0.875rem;
-            color: #475569;
+            font-size: 0.95rem;
+            color: var(--gray-600);
+            line-height: 1.5;
+            font-style: italic;
         }
 
         /* Animations */
-        @keyframes fadeInDown {
+        @keyframes slideInDown {
             from {
                 opacity: 0;
-                transform: translateY(-20px);
+                transform: translate3d(0, -100px, 0);
             }
             to {
                 opacity: 1;
-                transform: translateY(0);
+                transform: translate3d(0, 0, 0);
             }
         }
 
-        @keyframes fadeInUp {
+        @keyframes slideInUp {
             from {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: translate3d(0, 100px, 0);
             }
             to {
                 opacity: 1;
-                transform: translateY(0);
+                transform: translate3d(0, 0, 0);
             }
         }
 
-        /* Responsive Design */
+        /* Enhanced Responsive Design */
         @media (max-width: 768px) {
-            .team-name {
-                font-size: 2rem;
+            .container {
+                padding: 0 16px;
             }
-            
-            .team-photo {
-                width: 320px;
-                height: 240px;
+
+            .header {
+                padding: 60px 0 40px;
             }
-            
-            .members-grid {
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-                gap: 16px;
-            }
-            
+
             .logo {
-                width: 80px;
-                height: 80px;
-                font-size: 32px;
+                width: 100px;
+                height: 100px;
+                font-size: 40px;
+            }
+
+            .team-photo {
+                width: 95vw;
+                border-radius: 16px;
+            }
+
+            .members-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .member-card {
+                padding: 24px;
+            }
+
+            .member-photo {
+                width: 100px;
+                height: 100px;
+            }
+
+            .section-title {
+                font-size: 2rem;
             }
         }
 
         @media (max-width: 480px) {
-            .team-photo {
-                width: 280px;
-                height: 200px;
-            }
-            
             .play-button {
-                padding: 10px 24px;
-                font-size: 0.875rem;
+                padding: 12px 32px;
+                font-size: 1rem;
+            }
+
+            .team-tagline {
+                font-size: 1.125rem;
             }
         }
 
-        /* Loading effect */
+        /* Loading states */
         .loading-placeholder {
-            background: linear-gradient(90deg, #e2e8f0 25%, #f1f5f9 50%, #e2e8f0 75%);
+            background: linear-gradient(90deg, var(--gray-200) 25%, var(--gray-100) 50%, var(--gray-200) 75%);
             background-size: 200% 100%;
             animation: loading 1.5s infinite;
         }
 
         @keyframes loading {
-            0% {
-                background-position: 200% 0;
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        /* Scroll animations */
+        @media (prefers-reduced-motion: no-preference) {
+            .member-card {
+                opacity: 0;
+                transform: translateY(30px);
+                animation: fadeInUp 0.6s ease forwards;
             }
-            100% {
-                background-position: -200% 0;
+
+            .member-card:nth-child(1) { animation-delay: 0.1s; }
+            .member-card:nth-child(2) { animation-delay: 0.2s; }
+            .member-card:nth-child(3) { animation-delay: 0.3s; }
+            .member-card:nth-child(4) { animation-delay: 0.4s; }
+            .member-card:nth-child(5) { animation-delay: 0.5s; }
+            .member-card:nth-child(6) { animation-delay: 0.6s; }
+            .member-card:nth-child(7) { animation-delay: 0.7s; }
+            .member-card:nth-child(8) { animation-delay: 0.8s; }
+
+            @keyframes fadeInUp {
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
             }
         }
     </style>
 </head>
+
 <body>
     <div class="container">
-        <!-- Header Section -->
         <div class="header">
-            <div class="logo">🚀</div>
-            <h1 class="team-name">Team Alpha</h1>
-            <p class="team-tagline">Innovation • Collaboration • Excellence</p>
-            <a href="game.html" class="play-button">🎮 Play Our Game</a>
+            <div class="logo-container">
+                <div class="logo">
+                    <img src="ssnergy_squad.jpg" alt="Synergy Squad Logo">
+                </div>
+            </div>
+            <h1 class="team-name">Synergy Squad</h1>
+            <p class="team-tagline">Where Potential Meets Momentum</p>
+            <a href="game.html" class="play-button">Play Our Game</a>
         </div>
 
-        <!-- Team Photo Section -->
         <div class="team-photo-section">
             <div class="team-photo-container">
                 <div class="team-photo">
-                    <span>Team Photo</span>
-                    <!-- Replace with: <img src="team-photo.jpg" alt="Team Photo"> -->
+                    <img src="edited_ssteam.jpg" alt="Synergy Squad Team Photo">
                 </div>
             </div>
         </div>
 
-        <!-- Members Grid -->
-        <div class="members-grid">
-            <div class="member-card">
-                <div class="member-photo">👨‍💼</div>
-                <h3 class="member-name">Member 1</h3>
-                <p class="member-role">Team Lead</p>
-            </div>
-            
-            <div class="member-card">
-                <div class="member-photo">👩‍💻</div>
-                <h3 class="member-name">Member 2</h3>
-                <p class="member-role">Developer</p>
-            </div>
-            
-            <div class="member-card">
-                <div class="member-photo">👨‍🎨</div>
-                <h3 class="member-name">Member 3</h3>
-                <p class="member-role">Designer</p>
-            </div>
-            
-            <div class="member-card">
-                <div class="member-photo">👩‍🔬</div>
-                <h3 class="member-name">Member 4</h3>
-                <p class="member-role">Data Analyst</p>
-            </div>
-            
-            <div class="member-card">
-                <div class="member-photo">👨‍💻</div>
-                <h3 class="member-name">Member 5</h3>
-                <p class="member-role">Backend Engineer</p>
-            </div>
-            
-            <div class="member-card">
-                <div class="member-photo">👩‍🎨</div>
-                <h3 class="member-name">Member 6</h3>
-                <p class="member-role">UX Designer</p>
-            </div>
-            
-            <div class="member-card">
-                <div class="member-photo">👨‍🔧</div>
-                <h3 class="member-name">Member 7</h3>
-                <p class="member-role">DevOps Engineer</p>
-            </div>
-            
-            <div class="member-card">
-                <div class="member-photo">👩‍💼</div>
-                <h3 class="member-name">Member 8</h3>
-                <p class="member-role">Project Manager</p>
+        <div class="members-section">
+            <h2 class="section-title">Meet Our Squad</h2>
+            <div class="members-grid">
+                <div class="member-card">
+                    <div class="member-photo-container">
+                        <div class="member-photo">
+                            <img src="karthik.jpg" alt="Karthik Krishna">
+                        </div>
+                    </div>
+                    <h3 class="member-name">Karthik Krishna (C)</h3>
+                    <p class="member-role">Certified cybersecurity practitioner, wanna hack ex's dm? ask him</p>
+                </div>
+
+                <div class="member-card">
+                    <div class="member-photo-container">
+                        <div class="member-photo">
+                            <img src="keerthana.jpg" alt="Keerthana R Nambiar">
+                        </div>
+                    </div>
+                    <h3 class="member-name">Keerthana R Nambiar</h3>
+                    <p class="member-role">Wanna learn how to grow as a person? she's the best bet!!</p>
+                </div>
+
+                <div class="member-card">
+                    <div class="member-photo-container">
+                        <div class="member-photo">
+                            <img src="jiya2.jpg" alt="Jiya Martin">
+                        </div>
+                    </div>
+                    <h3 class="member-name">Jiya Martin</h3>
+                    <p class="member-role">No filters, no fakes - just 100% real vibes. She's as genuine as it gets!</p>
+                </div>
+
+                <div class="member-card">
+                    <div class="member-photo-container">
+                        <div class="member-photo">
+                            <img src="abbas.jpg" alt="Fathima Abbas">
+                        </div>
+                    </div>
+                    <h3 class="member-name">Fathima Abbas</h3>
+                    <p class="member-role">Hit 1 million views without breaking a sweat (real deal)</p>
+                </div>
+
+                <div class="member-card">
+                    <div class="member-photo-container">
+                        <div class="member-photo">
+                            <img src="fathimafidha.jpg" alt="Fathima Fidha">
+                        </div>
+                    </div>
+                    <h3 class="member-name">Fathima Fidha</h3>
+                    <p class="member-role">Lives a thousand lives through pages — if it's written, she's read it (twice)!</p>
+                </div>
+
+                <div class="member-card">
+                    <div class="member-photo-container">
+                        <div class="member-photo">
+                            <img src="johnpaul.jpg" alt="John Paul P.P">
+                        </div>
+                    </div>
+                    <h3 class="member-name">John Paul P.P</h3>
+                    <p class="member-role">Reads charts like bedtime stories — turns candlesticks into cash flow.</p>
+                </div>
+
+                <div class="member-card">
+                    <div class="member-photo-container">
+                        <div class="member-photo">
+                            <img src="nikhil.jpg" alt="Nikhil P.R">
+                        </div>
+                    </div>
+                    <h3 class="member-name">Nikhil P.R</h3>
+                    <p class="member-role">Chill in chaos, calm in storms — he's the human version of 'don't worry, it's all good'.</p>
+                </div>
+
+                <div class="member-card">
+                    <div class="member-photo-container">
+                        <div class="member-photo">
+                            <img src="elwin.jpg" alt="Elwin Paulson">
+                        </div>
+                    </div>
+                    <h3 class="member-name">Elwin Paulson</h3>
+                    <p class="member-role">Losing? Never heard of it — either wins or learns, but always comes out on top.</p>
+                </div>
             </div>
         </div>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Stagger animation for member cards
-            const memberCards = document.querySelectorAll('.member-card');
-            memberCards.forEach((card, index) => {
-                card.style.animationDelay = `${0.1 * index}s`;
+            // Enhanced logo parallax effect
+            const logo = document.querySelector('.logo');
+            let mouseX = 0, mouseY = 0;
+            let logoX = 0, logoY = 0;
+
+            document.addEventListener('mousemove', (e) => {
+                mouseX = (e.clientX / window.innerWidth - 0.5) * 10;
+                mouseY = (e.clientY / window.innerHeight - 0.5) * 10;
             });
 
-            // Click effect for play button
+            function animateLogo() {
+                logoX += (mouseX - logoX) * 0.1;
+                logoY += (mouseY - logoY) * 0.1;
+                logo.style.transform = `translate(${logoX}px, ${logoY}px)`;
+                requestAnimationFrame(animateLogo);
+            }
+            animateLogo();
+
+            // Enhanced click effect for play button
             const playButton = document.querySelector('.play-button');
-            playButton.addEventListener('click', function() {
-                this.style.transform = 'scale(0.97)';
+            playButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                this.style.transform = 'scale(0.95) translateY(-3px)';
                 setTimeout(() => {
                     this.style.transform = '';
-                }, 150);
+                    // Add your navigation logic here
+                    window.location.href = 'game.html';
+                }, 200);
             });
 
-            // Parallax effect for logo
-            const logo = document.querySelector('.logo');
-            document.addEventListener('mousemove', (e) => {
-                const x = (e.clientX / window.innerWidth - 0.5) * 8;
-                const y = (e.clientY / window.innerHeight - 0.5) * 8;
-                logo.style.transform = `translate(${x}px, ${y}px)`;
+            // Intersection Observer for scroll animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationPlayState = 'running';
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.member-card').forEach(card => {
+                observer.observe(card);
+            });
+
+            // Add subtle floating animation to member photos
+            document.querySelectorAll('.member-photo').forEach((photo, index) => {
+                photo.style.animationDelay = `${index * 0.2}s`;
+                photo.addEventListener('mouseenter', function() {
+                    this.style.animation = 'none';
+                    this.offsetHeight; // Trigger reflow
+                    this.style.animation = null;
+                });
             });
         });
     </script>
 </body>
+
 </html>
