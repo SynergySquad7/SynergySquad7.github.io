@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logo Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="game-header">
+            <h1>Logo Game by Synergy Squad</h1>
+            <div class="game-stats">
+                <div class="stat">
+                    <div class="stat-label">Score</div>
+                    <div class="stat-value" id="score">0</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-label">Moves</div>
+                    <div class="stat-value" id="moves">0</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-label">Time</div>
+                    <div class="stat-value" id="timer">0:00</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="game-board" id="gameBoard">
+        </div>
+
+        <div class="controls">
+            <button class="btn btn-primary" onclick="startNewGame()">New Game</button>
+            <button class="btn btn-secondary" onclick="resetGame()">Reset</button>
+        </div>
+    </div>
+
+    <!-- Victory Modal -->
+    <div class="victory-modal" id="victoryModal">
+        <div class="victory-content">
+            <h2>🎉 Congratulations!</h2>
+            <p>You completed the game!</p>
+            <div class="victory-stats">
+                <p><strong>Final Score:</strong> <span id="finalScore">0</span></p>
+                <p><strong>Total Moves:</strong> <span id="finalMoves">0</span></p>
+                <p><strong>Time:</strong> <span id="finalTime">0:00</span></p>
+            </div>
+            <div class="victory-buttons">
+                <button class="btn btn-primary" onclick="playAgain()">Play Again</button>
+                <button class="btn btn-secondary" onclick="closeModal()">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
