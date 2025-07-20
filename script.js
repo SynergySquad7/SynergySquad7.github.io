@@ -10,16 +10,15 @@ let gameState = {
     isGameActive: false
 };
 
-// Logo image paths (replace with your actual logo images)
 const logos = [
-    'images/4thdimension.jpg',
-    'images/alturos.jpg',
-    'images/astrabyte.jpg',
-    'images/catalyst.jpg',
-    'images/creators.jpg',
-    'images/nexora.jpg',
-    'images/octacore.jpg',
-    'images/ssnergy_squad.jpg'
+    '4thdimension.jpg',
+    'alturos.jpg',
+    'astrabyte.jpg',
+    'catalyst.jpg',
+    'creators.jpg',
+    'nexora.jpg',
+    'octacore.jpg',
+    'ssnergy_squad.jpg'
 ];
 
 // Initialize the game when page loads
